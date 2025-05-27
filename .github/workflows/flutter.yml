@@ -5,10 +5,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM_PRIVATE_KEY }}" > ~/.ssh/vagrant_private_key
+          chmod 600 ~/.ssh/vagrant_private_key
+          ssh-keyscan 192.168.56.4 >> ~/.ssh/known_hosts
 
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v4
