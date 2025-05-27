@@ -10,6 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: verify runner
+        run: |
+          echo "Running on ${hostname}"
+          df -h
+          free -h
+
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
