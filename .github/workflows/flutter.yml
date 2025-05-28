@@ -31,6 +31,7 @@ jobs:
         run: |
           echo $(whoami)
           mkdir -p /home/vagrant/my_flutter_app
+          sudo chown -R $(whoami):$(whoami) /home/vagrant/my_flutter_app
 
       - name: Install dependencies
         working-directory: /home/vagrant/my_flutter_app
