@@ -30,8 +30,8 @@ jobs:
       - name: create a working directory
         run: |
           echo $(whoami)
-          mkdir /home/vagrant/my_flutter_app
-          sudo chown -R $(whoami):$(whoami) /home/vagrant/my_flutter_app
+          mkdir ./my_flutter_app
+          sudo chown -R $(whoami):$(whoami) ./my_flutter_app
 
       - name: Install dependencies
         working-directory: /home/vagrant/my_flutter_app
