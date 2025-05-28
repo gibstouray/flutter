@@ -10,10 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: set variables
+        with:
+          script: |
+            WKDIR=$(pwd)/my_flutter_app
+          
       - name: verify runner
         run: |
           echo "Running on ${hostname}"
-
+          echo $WKDIR
+  
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
