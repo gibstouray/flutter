@@ -39,9 +39,10 @@ jobs:
           
 
       - name: Install dependencies
-        working-directory: ./my_flutter_app
+        working-directory: $(pwd)/my_flutter_app
         run: |
            echo "3"
+           echo $(pwd)/my_flutter_app
            flutter pub get
         
       - name: Analyze project source
