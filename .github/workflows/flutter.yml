@@ -13,6 +13,7 @@ jobs:
       - name: verify runner
         run: |
           echo "Running on ${hostname}"
+          echo "workspace: $GITHUB_WORKSPACE"
           echo $WKDIR
   
       - name: Setup SSH key
@@ -30,24 +31,22 @@ jobs:
 
       - name: create a working directory
         run: |
-          echo "2"
-          echo $(whoami)
-          mkdir $(pwd)/my_flutter_app
-          echo $(pwd)
-          cd $(pwd)/my_flutter_app
-          echo $(pwd)
+          # Copy all files to the working directory
+          mkdir -p $GITHUB_WORKSPACE/my_flutter_app
+          cp -r $GITHUB_WORKSPACE/* $GITHUB_WORKSPACE/my_flutter_app/
+          ls -la $GITHUB_WORKSPACE/my_flutter_app  # Verify pubspec.yaml exists
           
 
       - name: Install dependencies
-        working-directory: my_flutter_app
+        working-directory: $GITHUB_WORKSPACE/my_flutter_app
         run: |
-           echo "3"
-           echo $(pwd)/my_flutter_app
+           echo "Current directory: $(pwd)"
            flutter pub get
         
       - name: Analyze project source
+        working-directory: $GITHUB_WORKSPACE/my_flutter_app
         run: dart analyze
 
       - name: Run tests
-        working-directory: my_flutter_app
+        working-directory: $GITHUB_WORKSPACE/my_flutter_app
         run: flutter test
