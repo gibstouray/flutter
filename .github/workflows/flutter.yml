@@ -44,9 +44,9 @@ jobs:
            flutter pub get
         
       - name: Analyze project source
-        working-directory: $GITHUB_WORKSPACE/my_flutter_app
+        working-directory: '/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app'
         run: dart analyze
 
       - name: Run tests
-        working-directory: $GITHUB_WORKSPACE/my_flutter_app
+        working-directory: '/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//my_flutter_app'
         run: flutter test
