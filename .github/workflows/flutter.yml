@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         working-directory: $(pwd)/my_flutter_app
         run: |
-           cd $(pwd)/my_flutter
+           cd $(pwd)/my_flutter_app
            flutter pub get
         
       - name: Analyze project source
