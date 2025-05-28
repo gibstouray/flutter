@@ -40,7 +40,6 @@ jobs:
         working-directory: $(pwd)/my_flutter_app
         run: |
            echo "3"
-           cd $(pwd)/my_flutter_app
            flutter pub get
         
       - name: Analyze project source
