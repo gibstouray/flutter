@@ -33,9 +33,7 @@ jobs:
         run: |
           # Copy all files to the working directory
           mkdir -p $GITHUB_WORKSPACE/my_flutter_app
-          echo "present working directory is:"
-          echo $GITHUB_WORKSPACE
-          # cp -r $GITHUB_WORKSPACE/* $GITHUB_WORKSPACE/my_flutter_app/
+          rsync -a --exclude='workdir' $GITHUB_WORKSPACE/ $GITHUB_WORKSPACE/workdir/
           ls -la $GITHUB_WORKSPACE/my_flutter_app  # Verify pubspec.yaml exists
           
 
