@@ -37,7 +37,7 @@ jobs:
           
 
       - name: Install dependencies
-        working-directory: $(pwd)/my_flutter_app
+        working-directory: ./my_flutter_app
         run: |
            echo "3"
            flutter pub get
