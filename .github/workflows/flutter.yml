@@ -33,7 +33,7 @@ jobs:
         run: |
           # Copy all files to the working directory
           mkdir -p $GITHUB_WORKSPACE/my_flutter_app
-          cd ..
+          echo $GITHUB_WORKSPACE
           cp -r $GITHUB_WORKSPACE/* $GITHUB_WORKSPACE/my_flutter_app/
           ls -la $GITHUB_WORKSPACE/my_flutter_app  # Verify pubspec.yaml exists
           
