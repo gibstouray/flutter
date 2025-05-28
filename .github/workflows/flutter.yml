@@ -27,6 +27,10 @@ jobs:
           channel: stable
           version: 3.0.2
 
+      - name: create a working directory
+        run: |
+          mkdir -p /home/vagrant/my_flutter_app
+
       - name: Install dependencies
         working-directory: /home/vagrant/my_flutter_app
         run: flutter pub get
