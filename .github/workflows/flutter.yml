@@ -33,7 +33,7 @@ jobs:
         run: |
           # Copy all files to the working directory
           mkdir -p /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
-          rsync -a --exclude='workdir' $/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/ /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//workdir/
+          rsync -a --exclude='workdir' /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/ /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//workdir/
           ls -la /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app  # Verify pubspec.yaml exists
           
 
