@@ -40,13 +40,13 @@ jobs:
       - name: Install dependencies
         working-directory: $GITHUB_WORKSPACE/my_flutter_app
         run: |
-           cd "$GITHUB_WORKSPACE/my_flutter_app"
+           cd /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
            flutter pub get
         
       - name: Analyze project source
-        working-directory: '/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app'
+        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
         run: dart analyze
 
       - name: Run tests
-        working-directory: '/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//my_flutter_app'
+        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//my_flutter_app
         run: flutter test
