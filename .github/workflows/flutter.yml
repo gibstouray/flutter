@@ -30,19 +30,19 @@ jobs:
       - name: create a working directory
         run: |
           echo $(whoami)
-          mkdir my_flutter_app
+          mkdir $(pwd)/my_flutter_app
           echo $(pwd)
           
 
       - name: Install dependencies
-        working-directory: my_flutter_app
+        working-directory: $(pwd)/my_flutter_app
         run: |
-           cd my_flutter
+           cd $(pwd)/my_flutter
            flutter pub get
         
       - name: Analyze project source
         run: dart analyze
 
       - name: Run tests
-        working-directory: myflutter_app
+        working-directory: $(pwd)/myflutter_app
         run: flutter test
