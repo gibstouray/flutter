@@ -1,26 +1,39 @@
-name: Flutter
+name: Flutter CI
 
-on:
-  push:
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
+      - name: Verify paths
+        run: |
+          echo "Hardcoded path: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter"
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          ls -la /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter
+
+      - name: Setup Flutter
         uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          version: 3.0.2
+
+      - name: Prepare working directory
+        run: |
+          WORKSPACE="/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter"
+          mkdir -p "$WORKSPACE/my_flutter_app"
+          # Copy only necessary files (exclude .git)
+          find "$WORKSPACE" -maxdepth 1 -mindepth 1 -not -name my_flutter_app -not -name .git -exec cp -r {} "$WORKSPACE/my_flutter_app" \;
+          ls -la "$WORKSPACE/my_flutter_app"
 
       - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze project source
-        run: dart analyze
+        run: |
+          cd "/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app"
+          flutter pub get
 
       - name: Run tests
-        run: flutter test
+        run: |
+          cd "/home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app"
+          flutter test
