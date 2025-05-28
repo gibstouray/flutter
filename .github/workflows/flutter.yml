@@ -32,7 +32,7 @@ jobs:
       - name: create a working directory
         run: |
           # Copy all files to the working directory
-          mkdir -p $GITHUB_WORKSPACE/my_flutter_app
+          mkdir -p "$GITHUB_WORKSPACE/my_flutter_app"
           rsync -a --exclude='workdir' $GITHUB_WORKSPACE/ $GITHUB_WORKSPACE/workdir/
           ls -la $GITHUB_WORKSPACE/my_flutter_app  # Verify pubspec.yaml exists
           
@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies
         working-directory: $GITHUB_WORKSPACE/my_flutter_app
         run: |
-           cd $GITHUB_WORKSPACE/my_flutter_app
+           cd "$GITHUB_WORKSPACE/my_flutter_app"
            flutter pub get
         
       - name: Analyze project source
