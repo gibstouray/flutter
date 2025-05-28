@@ -5,23 +5,10 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-          
-      - name: verify runner
-        run: |
-          echo "Running on ${hostname}"
-          echo "workspace: $GITHUB_WORKSPACE"
-          echo $WKDIR
-  
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VM_PRIVATE_KEY }}" > ~/.ssh/vagrant_private_key
-          chmod 600 ~/.ssh/vagrant_private_key
-          ssh-keyscan 192.168.56.4 >> ~/.ssh/known_hosts
 
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v4
@@ -29,24 +16,11 @@ jobs:
           channel: stable
           version: 3.0.2
 
-      - name: create a working directory
-        run: |
-          # Copy all files to the working directory
-          mkdir -p /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
-          rsync -a --exclude='workdir' /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/ /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//workdir/
-          ls -la /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app  # Verify pubspec.yaml exists
-          
-
       - name: Install dependencies
-        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
-        run: |
-           cd /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
-           flutter pub get
-        
+        run: flutter pub get
+
       - name: Analyze project source
-        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
         run: dart analyze
 
       - name: Run tests
-        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter//my_flutter_app
         run: flutter test
