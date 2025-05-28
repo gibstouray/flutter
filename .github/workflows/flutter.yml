@@ -30,16 +30,19 @@ jobs:
       - name: create a working directory
         run: |
           echo $(whoami)
-          mkdir ./my_flutter_app
-          sudo chown -R $(whoami):$(whoami) ./my_flutter_app
+          mkdir my_flutter_app
+          echo $(pwd)
+          
 
       - name: Install dependencies
-        working-directory: /home/vagrant/my_flutter_app
-        run: flutter pub get
+        working-directory: my_flutter_app
+        run: |
+           cd my_flutter
+           flutter pub get
         
       - name: Analyze project source
         run: dart analyze
 
       - name: Run tests
-        working-directory: /home/vagrant/myflutter_app
+        working-directory: myflutter_app
         run: flutter test
