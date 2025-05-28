@@ -35,7 +35,7 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/my_flutter_app
           echo "present working directory is:"
           echo $GITHUB_WORKSPACE
-          cp -r $GITHUB_WORKSPACE/* $GITHUB_WORKSPACE/my_flutter_app/
+          # cp -r $GITHUB_WORKSPACE/* $GITHUB_WORKSPACE/my_flutter_app/
           ls -la $GITHUB_WORKSPACE/my_flutter_app  # Verify pubspec.yaml exists
           
 
