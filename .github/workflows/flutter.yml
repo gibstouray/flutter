@@ -38,7 +38,7 @@ jobs:
           
 
       - name: Install dependencies
-        working-directory: $GITHUB_WORKSPACE/my_flutter_app
+        working-directory: /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
         run: |
            cd /home/gibril/Desktop/nafa/flutter/actions-runner/_work/flutter/flutter/my_flutter_app
            flutter pub get
