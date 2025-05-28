@@ -30,6 +30,7 @@ jobs:
 
       - name: create a working directory
         run: |
+          echo "2"
           echo $(whoami)
           mkdir $(pwd)/my_flutter_app
           echo $(pwd)
@@ -38,6 +39,7 @@ jobs:
       - name: Install dependencies
         working-directory: $(pwd)/my_flutter_app
         run: |
+           echo "3"
            cd $(pwd)/my_flutter_app
            flutter pub get
         
