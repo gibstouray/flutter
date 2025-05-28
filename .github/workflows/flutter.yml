@@ -39,7 +39,7 @@ jobs:
           
 
       - name: Install dependencies
-        working-directory: my_flutter_app
+        working-directory: $(pwd)
         run: |
            echo "3"
            echo $(pwd)/my_flutter_app
@@ -49,5 +49,5 @@ jobs:
         run: dart analyze
 
       - name: Run tests
-        # working-directory: $(pwd)/myflutter_app
+        # working-directory: $(pwd)
         run: flutter test
